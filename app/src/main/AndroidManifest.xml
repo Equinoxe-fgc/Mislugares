@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vista_lugar"></activity>
+        <activity android:name=".vista_lugar" />
+        <activity android:name=".acercaDe"></activity>
     </application>
 
 </manifest>
