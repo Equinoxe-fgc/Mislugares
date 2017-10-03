@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/accion_compartir"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="compartir"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/accion_llegar"
+        android:icon="@android:drawable/ic_menu_directions"
+        android:title="cómo llegar"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/accion_editar"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="editar"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/accion_borrar"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="borrar"
+        app:showAsAction="ifRoom" />
+</menu>

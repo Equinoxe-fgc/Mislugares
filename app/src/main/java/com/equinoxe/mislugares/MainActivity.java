@@ -1,13 +1,22 @@
 package com.equinoxe.mislugares;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private long id;
+    private Lugar lugar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +56,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void lanzarVistaLugar(View v) {
-        Intent i = new Intent(this, vista_lugar.class);
+        /*Intent i = new Intent(this, vista_lugar.class);
         i.putExtra("id", (long)0);
-        startActivity(i);
+        startActivity(i);*/
+        final EditText entrada = new EditText(this);
+        entrada.setText("0");
+        new AlertDialog.Builder(this)
+                .setTitle("Selección de lugar")
+                .setMessage("Indica su id:")
+                .setView(entrada)
+                .setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        long id = Long.parseLong(entrada.getText().toString());
+                        Intent i = new Intent(MainActivity.this, vista_lugar.class);
+                        i.putExtra("id", id);
+                        startActivity(i);
+                    }
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
     }
 }

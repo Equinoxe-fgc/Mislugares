@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".vista_lugar" />
-        <activity android:name=".acercaDe"></activity>
+        <activity android:name=".acercaDe" />
+        <activity android:name=".edicion_lugar"></activity>
     </application>
 
 </manifest>
