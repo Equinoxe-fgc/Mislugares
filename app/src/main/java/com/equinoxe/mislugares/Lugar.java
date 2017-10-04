@@ -55,10 +55,6 @@ public class Lugar {
         return tipo;
     }
 
-    public void setTipo(TipoLugar tipo) {
-        this.tipo = tipo;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -97,5 +93,29 @@ public class Lugar {
 
     public void setValoracion(float valoracion) {
         this.valoracion = valoracion;
+    }
+
+    public void setTipo(TipoLugar tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

@@ -2,6 +2,8 @@ package com.equinoxe.mislugares;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -47,5 +49,33 @@ public class edicion_lugar extends AppCompatActivity {
 
         comentario = (EditText) findViewById(R.id.comentario);
         comentario.setText(lugar.getComentario());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_edicion_lugar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.cancelar:
+                finish();
+                break;
+            case R.id.guardar:
+                lugar.setNombre(nombre.getText().toString());
+                lugar.setTipo(TipoLugar.values()[tipo.getSelectedItemPosition()]);
+                lugar.setDireccion(direccion.getText().toString());
+                lugar.setTelefono(Integer.parseInt(telefono.getText().toString()));
+                lugar.setUrl(url.getText().toString());
+                lugar.setComentario(comentario.getText().toString());
+                finish();
+                break;
+        }
+
+        return true;
     }
 }

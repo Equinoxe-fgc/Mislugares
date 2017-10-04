@@ -30,6 +30,58 @@ public class vista_lugar extends AppCompatActivity {
 
         lugar = Lugares.elemento((int)id);
 
+        actualizarVistas();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.vista_lugar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.accion_compartir:
+                return true;
+            case R.id.accion_llegar:
+                return true;
+            case R.id.accion_editar:
+                Intent i = new Intent(this, edicion_lugar.class);
+                i.putExtra("id", id);
+                startActivityForResult(i, 1234);
+                return true;
+            case R.id.accion_borrar:
+                borrarLugar();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1234) {
+            actualizarVistas();
+            findViewById(R.id.scrollViewVistaLugar).invalidate();
+        }
+    }
+
+    public void  borrarLugar() {
+        new AlertDialog.Builder(this)
+                .setTitle("Borrado de lugar")
+                .setMessage("Estás seguro de que quieres eliminar este lugar?")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Lugares.borrar((int)id);
+                        finish();
+                    }
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+
+    public void actualizarVistas() {
         TextView nombre = (TextView)findViewById(R.id.nombre);
         nombre.setText(lugar.getNombre());
 
@@ -87,45 +139,5 @@ public class vista_lugar extends AppCompatActivity {
                     }
                 }
         );
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.vista_lugar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.accion_compartir:
-                return true;
-            case R.id.accion_llegar:
-                return true;
-            case R.id.accion_editar:
-                Intent i = new Intent(this, edicion_lugar.class);
-                i.putExtra("id", id);
-                startActivity(i);
-                return true;
-            case R.id.accion_borrar:
-                borrarLugar();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public void  borrarLugar() {
-        new AlertDialog.Builder(this)
-                .setTitle("Borrado de lugar")
-                .setMessage("Estás seguro de que quieres eliminar este lugar?")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        Lugares.borrar((int)id);
-                        finish();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
     }
 }
