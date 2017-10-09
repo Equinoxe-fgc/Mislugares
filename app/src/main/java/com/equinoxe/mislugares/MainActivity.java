@@ -8,17 +8,33 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private long id;
     private Lugar lugar;
+    public AdaptadorLugares adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        adaptador = new AdaptadorLugares(this);
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adaptador);
+
+        listView.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View vista, int posicion, long id) {
+        Intent i = new Intent(this, vista_lugar.class);
+        i.putExtra("id", id);
+        startActivity(i);
     }
 
     @Override
