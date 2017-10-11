@@ -12,10 +12,19 @@ public class GeoPunto {
         this.latitud = latitud;
     }
 
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
     @Override
     public String toString() {
         return "GeoPunto{" +
                 "longitud=" + longitud +
+
                 ", latitud=" + latitud +
                 '}';
     }

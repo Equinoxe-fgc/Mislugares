@@ -63,6 +63,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
+                android:onClick="verMapa"
                 tools:text="direccion del lugar" />
         </LinearLayout>
 
@@ -71,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="Logo del tipo"
+            android:onClick="llamadaTelefono"
             android:orientation="horizontal">
 
             <ImageView
@@ -111,6 +113,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
+                android:onClick="pgWeb"
                 tools:text="url del lugar" />
         </LinearLayout>
 
@@ -198,10 +201,11 @@
             android:contentDescription="fotografia">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageViewFoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
+                android:onClick="galeria"
                 app:srcCompat="@drawable/foto_epsg" />
 
             <LinearLayout
@@ -215,6 +219,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="logo camara"
+                    android:onClick="tomarFoto"
                     app:srcCompat="@android:drawable/ic_menu_camera" />
 
                 <ImageView
@@ -222,6 +227,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="logo galeria"
+                    android:onClick="galeria"
                     app:srcCompat="@android:drawable/ic_menu_gallery" />
 
             </LinearLayout>
